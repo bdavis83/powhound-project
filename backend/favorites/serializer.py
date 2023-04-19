@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Reply
+from .models import Favorites
 
-class ReplySerializer (serializers.Serializer):
+class FavoritesSerializer (serializers.Serializer):
     class Meta:
-        model = Reply
+        model = Favorites
         fields = ['user', 'favorite', 'text', 'user_id']
         depth = 1
