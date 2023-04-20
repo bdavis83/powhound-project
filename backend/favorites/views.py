@@ -8,7 +8,7 @@ from django.shortcuts import get_list_or_404
 
 @api_view (['GET'])
 @permission_classes([AllowAny])
-def get_all_favorites(request):
+def get_favorites(request):
     favorites = Favorites.objects.all()
     serializer = FavoritesSerializer (favorites, many=True)
     return Response(serializer.data)
@@ -24,5 +24,5 @@ def add_favorite (request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method=='GET':
         favorite = Favorites.objects.filter(user_id=request.user.id)
-        serializer = FavoritesSerializer(ski_resorts, many=True)
+        serializer = FavoritesSerializer(favorite, many=True)
         return Response (serializer.data)

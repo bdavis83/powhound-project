@@ -1,7 +1,8 @@
 from django.urls import path, include
-from favorites import views
+from ski_resorts import views
 
 urlpatterns = [
-    path ('', views.get_all_ski_resorts),
+    path ('', views.add_ski_resort),
+    path('all/', views.get_all_ski_resorts)
     
 ]

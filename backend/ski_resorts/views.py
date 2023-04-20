@@ -13,16 +13,12 @@ def get_all_ski_resorts(request):
     serializer = SkiResortSerializer(ski_resorts, many=True)
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def add_ski_resort (request):
     if request.method=='POST':
         serializer = SkiResortSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method=='GET':
-        ski_resorts = SkiResort.objects.filter(user_id=request.user.id)
-        serializer = SkiResortSerializer(ski_resorts, many=True)
-        return Response (serializer.data)
