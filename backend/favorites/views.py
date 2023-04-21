@@ -4,25 +4,25 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Favorites
 from .serializer import FavoritesSerializer
-from django.shortcuts import get_list_or_404
+from ski_resorts.models import SkiResort
+from django.shortcuts import get_object_or_404
 
 @api_view (['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def get_favorites(request):
     favorites = Favorites.objects.all()
     serializer = FavoritesSerializer (favorites, many=True)
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
-def add_favorite (request):
-    if request.method=='POST':
-        serializer = FavoritesSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method=='GET':
-        favorite = Favorites.objects.filter(user_id=request.user.id)
-        serializer = FavoritesSerializer(favorite, many=True)
-        return Response (serializer.data)
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_to_favorites(request):
+    ski_resort_id = request.data.get('ski_resort_id')
+    if not ski_resort_id:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    ski_resort = get_object_or_404(SkiResort, id=ski_resort_id)
+    favorite, created = Favorites.objects.get_or_create(user=request.user, ski_resort=ski_resort)
+    favorite.is_favorite = True
+    favorite.save()
+    serializer = FavoritesSerializer(favorite)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
