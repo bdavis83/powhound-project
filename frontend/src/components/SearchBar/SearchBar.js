@@ -11,7 +11,7 @@ const SearchBar = (props) => {
 
     function handleSubmit(event){
         event.preventDefault();
-        props.fetchVideos(search)
+        props.fetchCurrentWeather(search)
         
     }
 
@@ -21,7 +21,7 @@ const SearchBar = (props) => {
           sx={{backgroundColor: 'white'}}
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
+              <InputAdornment position="end" value={search} onChange = {(event)=> setSearch(event.target.value)}>
                 <IconButton  onClick={handleSubmit}>
                   <Search sx={{color: "steelblue"}} />
                 </IconButton>
