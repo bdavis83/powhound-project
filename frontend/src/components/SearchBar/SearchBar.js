@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import {useWeather} from '../../hooks/useWeather';
 import { Button, TextField } from '@mui/material';
 import { IconButton, InputAdornment} from '@mui/material';
-import { Search } from '@mui/icons-material'
-import './SearchBar.css'
+import { Search } from '@mui/icons-material';
+import './SearchBar.css';
 
 
 
