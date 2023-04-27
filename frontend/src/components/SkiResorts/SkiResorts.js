@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Card, CardContent, Typography, Grid } from '@mui/material'
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import { Link } from 'react-router-dom';
 
 const DisplaySkiResorts = (props) => {
     const [skiResorts, setSkiResorts] = useState([])
@@ -16,19 +19,31 @@ const DisplaySkiResorts = (props) => {
             fetchSkiResorts(skiResorts);
         },[]);
 
-    return ( 
-        <div className='skiResorts'>
-            <div>
-                {skiResorts && skiResorts.map((skiResort, index)=>{
-                    return (
-                        <div className='skiResorts-container'>
-                            <div key={index}>Name: {skiResort.name}</div>
-                            
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
+        return ( 
+            <Grid container spacing={2}>
+                {skiResorts && skiResorts.map((skiResort, index) => (
+                    <Grid item key={index} xs={12} sm={6} md={4}>
+                        <Link to={`/currentweather/${skiResort.latitude}, ${skiResort.longitude}`}>
+                        <Card sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: '0.5rem', }}>
+                            <CardContent>
+                                <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                                    {skiResort.name}
+                                </Typography>
+                                <Typography variant="body2" sx={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
+                                    {skiResort.city}, {skiResort.state} ({skiResort.region})
+                                </Typography>
+                                <Typography variant="body2" sx={{ fontSize: '12px' }}>
+                                    Latitude: {skiResort.latitude}
+                                </Typography>
+                                <Typography variant="body2" sx={{ fontSize: '12px' }}>
+                                    Longitude: {skiResort.longitude}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                        </Link>
+                    </Grid>
+                ))}
+            </Grid>
      );
 }
  

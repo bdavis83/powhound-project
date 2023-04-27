@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const CurrentWeather = (props) => {
+const CurrentWeather = ({skiResort}) => {
     const [weatherData, setWeatherData] = useState();
-    const { location } = props;
+    const lat = skiResort.latitude;
+    const lon = skiResort.longitude;
 
     
-    async function fetchCurrentWeather(location) {
+    async function fetchCurrentWeather() {
         try {
-            let response = await axios.get(`https://api.weather.gov/points/${location}/forecast`,
+
+            let response = await axios.get(` https://api.weather.gov/points/${skiResort.replace(' ', "")}`,
             {headers: {
-                'User-Agent': 'bdavis83@gmail.com',
-                'Accept': 'application/ld+json'
+                'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
+                'Accept': 'application/ld+json',
+                
             }
             
             })
@@ -22,16 +26,32 @@ const CurrentWeather = (props) => {
         }
     }
     useEffect(()=> {
+        console.log(skiResort)
         fetchCurrentWeather()
-    }, []);
+    }, [lat, lon]);
 
     return (
         <div>
-          <h6>Current Weather for {weatherData.name}</h6>
-          <p>{weatherData.detailedForecast}</p>
-          <p>Temperature: {weatherData.temperature}&deg;F</p>
-          <p>Wind: {weatherData.windSpeed}</p>
-        </div>
-      )};
+        {weatherData && (
+            <div>
+                <h1>Weather Forecast for {skiResort.name}</h1>
+                <ul>
+                    {weatherData.properties.periods.map((period, index) => (
+                        <li key={index}>
+                            <strong>{period.name}:</strong> {period.detailedForecast}
+                            <br />
+                            <strong>Temperature:</strong> {period.temperature}°F
+                            <br />
+                            <strong>Precipitation:</strong> {period.shortForecast.includes('Rain') ? 'Rain' : 'Snow'}
+                            <br />
+                            <strong>Wind:</strong> {period.windSpeed} {period.windDirection}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )}
+    </div>
+      )
+    };
 
     export default CurrentWeather;

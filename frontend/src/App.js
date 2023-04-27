@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import POWhoundHome from "./pages/POWhoundHome/POWhoundHome";
+import CurrentWeatherPage from "./pages/CurrentWeatherPage/CurrentWeatherPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Powhoundhome" element = {<PrivateRoute><POWhoundHome/></PrivateRoute>} />
+        <Route path="/currentweather/:id" element = {<CurrentWeatherPage />} />
       </Routes>
       <Footer />
     </div>
