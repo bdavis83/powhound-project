@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Grid, Card, CardContent, Typography} from '@mui/material'
 import axios from 'axios';
 
 const CurrentWeather = ({skiResort}) => {
@@ -11,7 +12,7 @@ const CurrentWeather = ({skiResort}) => {
     async function fetchCurrentWeather() {
         try {
 
-            let response = await axios.get(` https://api.weather.gov/points/${skiResort.replace(' ', "")}`,
+            let pointResponse = await axios.get(` https://api.weather.gov/points/${skiResort.replace(' ', "")}`,
             {headers: {
                 'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
                 'Accept': 'application/ld+json',
@@ -19,8 +20,18 @@ const CurrentWeather = ({skiResort}) => {
             }
             
             })
-            console.log(response.data)
-            setWeatherData(response.data)
+            let forecastUrl = pointResponse.data.forecast;
+
+            let forecastResponse = await axios.get(forecastUrl, {
+                headers: {
+                    'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
+                    'Accept': 'application/json',
+                }
+            });
+            console.log(pointResponse.data)
+            console.log (forecastResponse.data)        
+            setWeatherData(forecastResponse.data)
+            
         } catch (error) {
             console.log(error.message)
         }
@@ -31,27 +42,32 @@ const CurrentWeather = ({skiResort}) => {
     }, [lat, lon]);
 
     return (
-        <div>
-        {weatherData && (
-            <div>
-                <h1>Weather Forecast for {skiResort.name}</h1>
-                <ul>
-                    {weatherData.properties.periods.map((period, index) => (
-                        <li key={index}>
-                            <strong>{period.name}:</strong> {period.detailedForecast}
-                            <br />
-                            <strong>Temperature:</strong> {period.temperature}°F
-                            <br />
-                            <strong>Precipitation:</strong> {period.shortForecast.includes('Rain') ? 'Rain' : 'Snow'}
-                            <br />
-                            <strong>Wind:</strong> {period.windSpeed} {period.windDirection}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )}
-    </div>
-      )
+        <Grid container spacing={2}>
+          {weatherData?.properties?.periods.map((period, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card sx={{ height: 400 }}>
+                <CardContent>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    {period.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" gutterBottom>
+                    {period.temperature}&deg;F
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" gutterBottom>
+                    {period.shortForecast.includes('Rain') ? 'Rain' : 'Snow'}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" gutterBottom>
+                    Wind: {period.windSpeed} {period.windDirection}
+                  </Typography>
+                  <Typography variant="body1" component="p">
+                    {period.detailedForecast}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      );
     };
 
     export default CurrentWeather;
