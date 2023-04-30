@@ -3,6 +3,8 @@ import useAuth from '../../hooks/useAuth';
 import SkiResorts from '../../components/SkiResorts/SkiResorts';
 import axios from 'axios';
 import DisplaySkiResorts from '../../components/SkiResorts/SkiResorts';
+import WeatherMap from '../../components/WeatherMap/WeatherMap';
+import Map from '../../components/Map/Map'
 
 
 const POWhoundHome = () => {
@@ -28,6 +30,8 @@ const POWhoundHome = () => {
 
     return ( 
         <div className='container'>
+        <div >
+            
             <h3>{user.username}'s Stash</h3>
             <SkiResorts displaySkiResorts = {DisplaySkiResorts}/>
             
@@ -37,6 +41,10 @@ const POWhoundHome = () => {
                         {favorites.ski_resort}
                     </p>
                 ))} */}
+        </div>
+        <div>
+            <Map />
+        </div>
         </div>
      );
 }
