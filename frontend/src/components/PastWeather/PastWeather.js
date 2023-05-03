@@ -22,15 +22,15 @@ debugger
         fecthData();
     },[latitude, longitude])
 
-    if (!pastWeatherData) {
+    if (!pastWeatherData.data) {
         return null;
     }
 
     return ( 
         <Grid container spacing={3}>
     
-    {pastWeatherData.map((data) => (
-  <Card key={data}>
+    {pastWeatherData.data.map((data, index) => (
+  <Card key={index}>
     <CardContent>
       <Typography variant="h5" component="h2">
         Temperature: {data.temp}
