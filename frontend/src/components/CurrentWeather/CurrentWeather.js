@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography} from '@mui/material'
 import axios from 'axios';
 
 const CurrentWeather = ({skiResort}) => {
     const [weatherData, setWeatherData] = useState();
+    const [radarStation, setRadarStation] = useState();
     const lat = skiResort.latitude;
     const lon = skiResort.longitude;
 
@@ -12,7 +13,7 @@ const CurrentWeather = ({skiResort}) => {
     async function fetchCurrentWeather() {
         try {
 
-            let pointResponse = await axios.get(` https://api.weather.gov/points/${skiResort.replace(' ', "")}`,
+            let pointResponse = await axios.get(`https://api.weather.gov/points/${skiResort.replace(' ', "")}`,
             {headers: {
                 'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
                 'Accept': 'application/ld+json',
@@ -21,7 +22,7 @@ const CurrentWeather = ({skiResort}) => {
             
             })
             let forecastUrl = pointResponse.data.forecast;
-
+            let radarStation = pointResponse.data.radarStation;
             let forecastResponse = await axios.get(forecastUrl, {
                 headers: {
                     'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
@@ -29,8 +30,10 @@ const CurrentWeather = ({skiResort}) => {
                 }
             });
             console.log(pointResponse.data)
+            console.log(radarStation)
             console.log (forecastResponse.data)        
             setWeatherData(forecastResponse.data)
+            setRadarStation(pointResponse.data.radarStation)
             
         } catch (error) {
             console.log(error.message)
@@ -61,6 +64,16 @@ const CurrentWeather = ({skiResort}) => {
                   </Typography>
                   <Typography variant="body1" component="p">
                     {period.detailedForecast}
+                  </Typography>
+
+                  <Typography variant="body1" component="p">
+                    {radarStation}
+                  </Typography>
+                  <Typography>
+                    <Link to={`/historicalweather/${skiResort}`}
+                      >
+                      <Typography>Weather for the last 7 days</Typography>
+                    </Link>
                   </Typography>
                 </CardContent>
               </Card>

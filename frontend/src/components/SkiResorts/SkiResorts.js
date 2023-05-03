@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Card, CardContent, Typography, Grid } from '@mui/material'
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { Link } from 'react-router-dom';
 
 const DisplaySkiResorts = (props) => {

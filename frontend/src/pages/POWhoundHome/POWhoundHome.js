@@ -11,20 +11,20 @@ const POWhoundHome = () => {
     const [user, token] = useAuth();
     const [favoriteLocations, setFavoriteLocations] = useState ([])
 
-    useEffect(()=> {
-        const fetchFavoriteLocations = async ()=> {
-            try {
-                let response = await axios.get('http://127.0.0.1:8000/api/favorites/', 
-                {headers: {
-                    Authorization: "Bearer " + token,
-                },});
-                setFavoriteLocations(response.data);
-            } catch (error){
-                console.log(error.response.data)
-            }
-        };
-        fetchFavoriteLocations();
-    }, [token]);
+    // useEffect(()=> {
+    //     const fetchFavoriteLocations = async ()=> {
+    //         try {
+    //             let response = await axios.get('http://127.0.0.1:8000/api/favorites/', 
+    //             {headers: {
+    //                 Authorization: "Bearer " + token,
+    //             },});
+    //             setFavoriteLocations(response.data);
+    //         } catch (error){
+    //             console.log(error.response.data)
+    //         }
+    //     };
+    //     fetchFavoriteLocations();
+    // }, [token]);
 
 
 
