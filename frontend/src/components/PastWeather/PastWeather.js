@@ -39,10 +39,10 @@ const PastWeather = ({ skiResort }) => {
               Date: {moment.unix(data.dt).format("MM/DD/YYYY")}
             </Typography>
             <Typography variant="body2" component="p">
-              Temperature: {data.temp}
+              Temperature: {data.temp}&deg;F
             </Typography>
             <Typography variant="body2" component="p">
-              Weather: {data.weather.main}
+              Weather: {data.weather.description}
             </Typography>
             <Typography variant="body2" component="p">
               Wind Speed: {data.wind_speed}

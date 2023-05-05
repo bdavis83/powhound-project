@@ -1,0 +1,28 @@
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    color: black;
+    
+    
+}
+
+html{
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+
+main {
+    margin: 0 auto;
+    min-height: 100vh;
+
+}
+
+header,
+section {
+    margin: 0 5rem;
+
+}

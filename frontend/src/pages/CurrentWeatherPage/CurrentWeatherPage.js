@@ -15,7 +15,7 @@ const CurrentWeatherPage = (props) => {
     return (
       <div>
         <Typography variant="h4" align="center">
-          Weather Forecast
+          7-day Forecast
         </Typography>
         <CurrentWeather skiResort={skiResort} />
       </div>

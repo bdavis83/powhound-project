@@ -72,7 +72,7 @@ const CurrentWeather = ({skiResort}) => {
                   <Typography>
                     <Link to={`/historicalweather/${skiResort}`}
                       >
-                      <Typography>Weather for the last 7 days</Typography>
+                      <Typography>Weather 24 Hours Ago</Typography>
                     </Link>
                   </Typography>
                 </CardContent>

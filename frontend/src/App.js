@@ -15,8 +15,6 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import SkiMapPage from "./pages/SkiMapPage/SkiMapPage";
-import HistoricalWeather from "./components/HistoricalWeather/HistoricalWeather";
 import HistoricalWeatherPage from "./pages/HistoricalWeatherPage/HistoricalWeatherPage";
 import GoogleMapSkiResorts from "./components/GoogleMapSkiResorts/GoogleMapSkiResorts";
 
@@ -37,7 +35,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Powhoundhome" element = {<PrivateRoute><POWhoundHome/></PrivateRoute>} />
         <Route path="/currentweather/:id" element = {<CurrentWeatherPage />} />
-        <Route path="/skimap/" element = {<SkiMapPage />} />
+        
         <Route path="/historicalWeather/:id" element = {<HistoricalWeatherPage />} />
         <Route path="/resortmap/" element = {<GoogleMapSkiResorts />} />
 

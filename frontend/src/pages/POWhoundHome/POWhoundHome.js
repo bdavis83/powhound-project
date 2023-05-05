@@ -3,8 +3,6 @@ import useAuth from '../../hooks/useAuth';
 import SkiResorts from '../../components/SkiResorts/SkiResorts';
 import axios from 'axios';
 import DisplaySkiResorts from '../../components/SkiResorts/SkiResorts';
-import WeatherMap from '../../components/WeatherMap/WeatherMap';
-import Map from '../../components/Map/Map'
 
 
 const POWhoundHome = () => {
@@ -43,7 +41,7 @@ const POWhoundHome = () => {
                 ))} */}
         </div>
         <div>
-            <Map />
+            
         </div>
         </div>
      );
