@@ -1,0 +1,102 @@
+{@context: Array(2), type: 'Feature', geometry: {…}, properties: {…}}
+@context
+: 
+Array(2)
+0
+: 
+"https://geojson.org/geojson-ld/geojson-context.jsonld"
+1
+: 
+{@version: '1.1', wx: 'https://api.weather.gov/ontology#', geo: 'http://www.opengis.net/ont/geosparql#', unit: 'http://codes.wmo.int/common/unit/', @vocab: 'https://api.weather.gov/ontology#'}
+length
+: 
+2
+[[Prototype]]
+: 
+Array(0)
+geometry
+: 
+{type: 'Polygon', coordinates: Array(1)}
+properties
+: 
+elevation
+: 
+{unitCode: 'wmoUnit:m', value: 224.9424}
+forecastGenerator
+: 
+"BaselineForecastGenerator"
+generatedAt
+: 
+"2023-05-03T00:38:10+00:00"
+periods
+: 
+Array(14)
+0
+: 
+{number: 1, name: 'Tonight', startTime: '2023-05-02T20:00:00-04:00', endTime: '2023-05-03T06:00:00-04:00', isDaytime: false, …}
+1
+: 
+{number: 2, name: 'Wednesday', startTime: '2023-05-03T06:00:00-04:00', endTime: '2023-05-03T18:00:00-04:00', isDaytime: true, …}
+2
+: 
+{number: 3, name: 'Wednesday Night', startTime: '2023-05-03T18:00:00-04:00', endTime: '2023-05-04T06:00:00-04:00', isDaytime: false, …}
+3
+: 
+{number: 4, name: 'Thursday', startTime: '2023-05-04T06:00:00-04:00', endTime: '2023-05-04T18:00:00-04:00', isDaytime: true, …}
+4
+: 
+{number: 5, name: 'Thursday Night', startTime: '2023-05-04T18:00:00-04:00', endTime: '2023-05-05T06:00:00-04:00', isDaytime: false, …}
+5
+: 
+{number: 6, name: 'Friday', startTime: '2023-05-05T06:00:00-04:00', endTime: '2023-05-05T18:00:00-04:00', isDaytime: true, …}
+6
+: 
+{number: 7, name: 'Friday Night', startTime: '2023-05-05T18:00:00-04:00', endTime: '2023-05-06T06:00:00-04:00', isDaytime: false, …}
+7
+: 
+{number: 8, name: 'Saturday', startTime: '2023-05-06T06:00:00-04:00', endTime: '2023-05-06T18:00:00-04:00', isDaytime: true, …}
+8
+: 
+{number: 9, name: 'Saturday Night', startTime: '2023-05-06T18:00:00-04:00', endTime: '2023-05-07T06:00:00-04:00', isDaytime: false, …}
+9
+: 
+{number: 10, name: 'Sunday', startTime: '2023-05-07T06:00:00-04:00', endTime: '2023-05-07T18:00:00-04:00', isDaytime: true, …}
+10
+: 
+{number: 11, name: 'Sunday Night', startTime: '2023-05-07T18:00:00-04:00', endTime: '2023-05-08T06:00:00-04:00', isDaytime: false, …}
+11
+: 
+{number: 12, name: 'Monday', startTime: '2023-05-08T06:00:00-04:00', endTime: '2023-05-08T18:00:00-04:00', isDaytime: true, …}
+12
+: 
+{number: 13, name: 'Monday Night', startTime: '2023-05-08T18:00:00-04:00', endTime: '2023-05-09T06:00:00-04:00', isDaytime: false, …}
+13
+: 
+{number: 14, name: 'Tuesday', startTime: '2023-05-09T06:00:00-04:00', endTime: '2023-05-09T18:00:00-04:00', isDaytime: true, …}
+length
+: 
+14
+[[Prototype]]
+: 
+Array(0)
+units
+: 
+"us"
+updateTime
+: 
+"2023-05-03T00:11:18+00:00"
+updated
+: 
+"2023-05-03T00:11:18+00:00"
+validTimes
+: 
+"2023-05-02T18:00:00+00:00/P7DT10H"
+[[Prototype]]
+: 
+Object
+type
+: 
+"Feature"
+[[Prototype]]
+: 
+Object

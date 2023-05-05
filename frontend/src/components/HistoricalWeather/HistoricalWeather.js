@@ -40,7 +40,7 @@ debugger
         
         
         try {
-            let pointResponse = await axios.get(`https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&datatypeid=TAVG&limit=1000&stationid=GHCND:USW00023129&startdate=${sevenDaysAgo}&enddate=${today}`,
+            let pointResponse = await axios.get(`https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=${weatherStation}&datatypeid=TAVG&limit=1000&stationid=GHCND:USW00023129&startdate=${sevenDaysAgo}&enddate=${today}`,
             {
                 headers: {token: 'zqcBNXgeSuwGlgEJXrIHzenuRVtWhRYk'}
             })

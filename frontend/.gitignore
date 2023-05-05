@@ -132,3 +132,7 @@ dist
 
 localkey.js
 maptoken.js
+noaatoken.js
+openweatherkey.js
+googlemapsapikey.js
+

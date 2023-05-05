@@ -14,11 +14,13 @@ const HistoricalWeatherPage = (props) => {
         }, [id])
 
     return ( 
-        <div>
+<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}>
         <Typography variant="h4" align="center">
-          Weather For the Last 7 days
+          Weather For the Last 24 hours
         </Typography>
-        <PastWeather skiResort={skiResort} />
+        <div style={{ marginTop: '50px' }}>
+    <PastWeather skiResort={skiResort} />
+  </div>
       </div>
      );
 }

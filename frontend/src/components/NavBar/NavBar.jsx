@@ -12,7 +12,7 @@ const Navbar = () => {
     <div className="navBar">
       <ul className="navLinks">
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/powhoundhome" style={{ textDecoration: "none", color: "white" }}>
             <b>POWhound</b>
           </Link></li>
           <li>
