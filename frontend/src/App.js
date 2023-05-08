@@ -18,11 +18,13 @@ import PrivateRoute from "./utils/PrivateRoute";
 import HistoricalWeatherPage from "./pages/HistoricalWeatherPage/HistoricalWeatherPage";
 import GoogleMapSkiResorts from "./components/GoogleMapSkiResorts/GoogleMapSkiResorts";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import Banner from "./components/Banner/Banner";
 
 function App() {
   return (
     <div>
       <Navbar />
+     
       <Routes>
         <Route
           path="/"

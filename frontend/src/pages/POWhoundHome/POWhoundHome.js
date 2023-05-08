@@ -3,6 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import SkiResorts from '../../components/SkiResorts/SkiResorts';
 import axios from 'axios';
 import DisplaySkiResorts from '../../components/SkiResorts/SkiResorts';
+import Banner from '../../components/Banner/Banner';
 
 
 const POWhoundHome = () => {
@@ -27,10 +28,15 @@ const POWhoundHome = () => {
 
 
     return ( 
-        <div className='container'>
-        <div >
+        
+        <div className='banner container' style={{width: '100%'}}>
+            <Banner />
+            <div className='container'>
+       
+         <div style={{marginTop: '30px'}}>
             
-            <h3>{user.username}'s Stash</h3>
+            <h3>Resorts</h3>
+            
             <SkiResorts displaySkiResorts = {DisplaySkiResorts}/>
             
             {/* {favoriteLocations && 
@@ -42,6 +48,7 @@ const POWhoundHome = () => {
         </div>
         <div>
             
+        </div>
         </div>
         </div>
      );

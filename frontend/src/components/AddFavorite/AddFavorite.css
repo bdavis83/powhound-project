@@ -1,0 +1,17 @@
+.addButton {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: none;
+    background-color: lightgray;
+    cursor: pointer;
+  }
+  
+  .addButton:hover {
+    background-color: darkgray;
+  }
+  
+  .addButton.disabled {
+    background-color: lightblue;
+    cursor: not-allowed;
+  }

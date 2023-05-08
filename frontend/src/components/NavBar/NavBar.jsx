@@ -15,19 +15,17 @@ const Navbar = () => {
           <Link to="/powhoundhome" style={{ textDecoration: "none", color: "white" }}>
             <b>POWhound</b>
           </Link></li>
-          <li>
+          {/* <li>
             <Link to="/" style = {{textDecoration: "none", color: "white"}}>
             <p>IKON Pass Resorts</p>
           </Link></li>
           <li><Link to="/" style = {{textDecoration: "none", color: "white"}}>
             <p>Epic Pass Resorts</p>
+          </Link></li> */}
+          <li><Link to="/resortmap/" style = {{textDecoration: "none", color: "white"}}>
+            <p>Resorts on the Map</p>
           </Link></li>
-          <li><Link to="/" style = {{textDecoration: "none", color: "white"}}>
-            <p>Mountain Collective Pass Resorts</p>
-          </Link></li>
-          <li><Link to="/" style = {{textDecoration: "none", color: "white"}}>
-            <p>Independent</p>
-          </Link></li>
+       
           <SearchBar/>
           
         

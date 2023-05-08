@@ -51,17 +51,35 @@ const DisplaySkiResorts = () => {
 
   return (
     <Grid container spacing={2}>
-      {skiResorts &&
-        skiResorts.map((skiResort, index) => (
-          <Grid item key={index} xs={12} sm={6} md={4}>
-            <Card sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: '0.5rem' }}>
-              <CardContent>
+    {skiResorts &&
+      skiResorts.map((skiResort, index) => (
+        <Grid item key={index} xs={12} sm={6} md={4}>
+          <Card
+            sx={{
+                backgroundColor: 'rgba(70, 130, 180, 0.8)',
+              boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+              borderRadius: '0.5rem',
+              color: 'white',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <CardContent
+              sx={{
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
+              <div>
                 <Link to={`/currentweather/${skiResort.latitude},${skiResort.longitude}`}>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
                     {skiResort.name}
                   </Typography>
                 </Link>
-                <Typography variant="body2" sx={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
+                <Typography variant="body2" sx={{ marginBottom: '1rem' }}>
                   {skiResort.city}, {skiResort.state} ({skiResort.region})
                 </Typography>
                 <Typography variant="body2" sx={{ fontSize: '12px' }}>
@@ -70,17 +88,22 @@ const DisplaySkiResorts = () => {
                 <Typography variant="body2" sx={{ fontSize: '12px' }}>
                   Longitude: {skiResort.longitude}
                 </Typography>
+              </div>
 
+              <div>
                 <AddFavorite
                   skiResortId={skiResort.id}
                   onAddFavorite={addFavorite}
                   isFavorite={isFavorite(skiResort.id)}
+                  sx={{ marginTop: '1rem', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)' }}
                 />
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-    </Grid>
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+  </Grid>
+
   );
 };
 
