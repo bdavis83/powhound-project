@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import HistoricalWeatherPage from "./pages/HistoricalWeatherPage/HistoricalWeatherPage";
 import GoogleMapSkiResorts from "./components/GoogleMapSkiResorts/GoogleMapSkiResorts";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Powhoundhome" element = {<PrivateRoute><POWhoundHome/></PrivateRoute>} />
         <Route path="/currentweather/:id" element = {<CurrentWeatherPage />} />
-        
+        <Route path="/favorites/" element = {<FavoritesPage />}/>
         <Route path="/historicalWeather/:id" element = {<HistoricalWeatherPage />} />
         <Route path="/resortmap/" element = {<GoogleMapSkiResorts />} />
 
