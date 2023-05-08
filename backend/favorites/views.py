@@ -17,12 +17,30 @@ def get_favorites(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_to_favorites(request):
-    ski_resort_id = request.data.get('ski_resort_id')
-    if not ski_resort_id:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-    ski_resort = get_object_or_404(SkiResort, id=ski_resort_id)
-    favorite, created = Favorites.objects.get_or_create(user=request.user, ski_resort=ski_resort)
-    favorite.is_favorite = True
-    favorite.save()
-    serializer = FavoritesSerializer(favorite)
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    if request.method == 'POST':
+        ski_resort_id = request.data.get('ski_resort_id')
+        if not ski_resort_id:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        ski_resort = get_object_or_404(SkiResort, id=ski_resort_id)
+        favorite, created = Favorites.objects.get_or_create(user=request.user, ski_resort=ski_resort)
+        favorite.is_favorite = True
+        favorite.save()
+        serializer = FavoritesSerializer(favorite)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def remove_from_favorites(request, favorite_id):
+    favorite = get_object_or_404(Favorites, id=favorite_id, user=request.user)
+    favorite.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_favorite(request, favorite_id):
+    favorite = get_object_or_404(Favorites, id=favorite_id, user=request.user)
+    serializer = FavoritesSerializer(favorite, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
