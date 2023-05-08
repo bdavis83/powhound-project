@@ -30,7 +30,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <POWhoundHome />
             </PrivateRoute>
           }
         />

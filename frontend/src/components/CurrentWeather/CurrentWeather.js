@@ -62,17 +62,17 @@ const CurrentWeather = ({skiResort}) => {
                   <Typography variant="body2" color="textSecondary" gutterBottom>
                     Wind: {period.windSpeed} {period.windDirection}
                   </Typography>
-                  <Typography variant="body1" component="p">
+                  <Typography variant="body2" color="textSecondary" gutterBottom>
                     {period.detailedForecast}
                   </Typography>
 
-                  <Typography variant="body1" component="p">
+                  <Typography variant="body2" color="textSecondary" gutterBottom>
                     {radarStation}
                   </Typography>
                   <Typography>
                     <Link to={`/historicalweather/${skiResort}`}
                       >
-                      <Typography>Weather 24 Hours Ago</Typography>
+                      <Typography variant="body2" color="textSecondary" gutterBottom>Weather 24 Hours Ago</Typography>
                     </Link>
                   </Typography>
                 </CardContent>
