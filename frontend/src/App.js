@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import POWhoundHome from "./pages/POWhoundHome/POWhoundHome";
 import CurrentWeatherPage from "./pages/CurrentWeatherPage/CurrentWeatherPage";
+import WeatherNowPage from "./pages/WeatherNowPage/WeatherNowPage"
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -41,7 +42,7 @@ function App() {
         <Route path="/favorites/" element = {<FavoritesPage />}/>
         <Route path="/historicalWeather/:id" element = {<HistoricalWeatherPage />} />
         <Route path="/resortmap/" element = {<GoogleMapSkiResorts />} />
-
+        <Route path="/weathernow/:id" element = {<WeatherNowPage />} />
       </Routes>
       <Footer />
     </div>

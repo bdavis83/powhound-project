@@ -74,6 +74,11 @@ const DisplaySkiResorts = () => {
               }}
             >
               <div>
+                <Link to ={`/weathernow/${skiResort.latitude}, ${skiResort.longitude}`}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                    {skiResort.name} Current Weather
+                  </Typography>
+                </Link>
                 <Link to={`/currentweather/${skiResort.latitude},${skiResort.longitude}`}>
                   <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
                     {skiResort.name}
