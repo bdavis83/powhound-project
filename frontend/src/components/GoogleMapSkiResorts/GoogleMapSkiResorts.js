@@ -3,7 +3,7 @@ import { GoogleMapsApiKEY } from "../../googlemapsapikey";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import CurrentWeather from "../CurrentWeather/CurrentWeather";
+import WeatherForecast from "../WeatherForecast/WeatherForecast";
 
 const containerStyle = {
   width: '100%',
@@ -89,8 +89,8 @@ function GoogleMapSkiResorts() {
                 <h3>{skiResort.name}</h3>
                 <p>{skiResort.city}, {skiResort.state}</p>
                 <p>Region: {skiResort.region}</p>
-                <Link to={`/currentweather/${skiResort.latitude}, ${skiResort.longitude}`}>
-                  Current Forecast
+                <Link to={`/WeatherForecast/${skiResort.latitude}, ${skiResort.longitude}`}>
+                  Forecast
                 </Link>
               </div>
             </InfoWindow>

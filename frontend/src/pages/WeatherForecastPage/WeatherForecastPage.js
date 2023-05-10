@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
-import WeatherNow from '../../components/WeatherNow/WeatherNow'
+import CurrentWeather from '../../components/WeatherForecast/WeatherForecast';
 import { Typography } from '@mui/material';
 
 const CurrentWeatherPage = (props) => {
@@ -16,13 +15,14 @@ const CurrentWeatherPage = (props) => {
     return (
       <div>
         <Typography variant="h4" align="center">
-          Current Weather
+          7-day Forecast
         </Typography>
-        <WeatherNow skiResort={skiResort} />
-        
+        <CurrentWeather skiResort={skiResort} />
       </div>
     );
   };
 
  
 export default CurrentWeatherPage;
+
+//do i need use params ?

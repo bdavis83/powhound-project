@@ -8,7 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import POWhoundHome from "./pages/POWhoundHome/POWhoundHome";
 import CurrentWeatherPage from "./pages/CurrentWeatherPage/CurrentWeatherPage";
-import WeatherNowPage from "./pages/WeatherNowPage/WeatherNowPage"
+import WeatherForecastPage from "./pages/WeatherForecastPage/WeatherForecastPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -38,11 +38,12 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Powhoundhome" element = {<PrivateRoute><POWhoundHome/></PrivateRoute>} />
-        <Route path="/currentweather/:id" element = {<CurrentWeatherPage />} />
+        <Route path="/weatherforecast/:id" element = {<WeatherForecastPage />} />
         <Route path="/favorites/" element = {<FavoritesPage />}/>
         <Route path="/historicalWeather/:id" element = {<HistoricalWeatherPage />} />
         <Route path="/resortmap/" element = {<GoogleMapSkiResorts />} />
-        <Route path="/weathernow/:id" element = {<WeatherNowPage />} />
+        <Route path="/currrentweather/:id" element = {<CurrentWeatherPage />} />
+        
       </Routes>
       <Footer />
     </div>

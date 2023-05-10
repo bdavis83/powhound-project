@@ -1,86 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Grid, Card, CardContent, Typography} from '@mui/material'
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import moment from "moment";
+import { Grid, Card, CardContent, Typography } from "@mui/material";
+import { openWeatherKey } from "../../openweatherkey";
 
-const CurrentWeather = ({skiResort}) => {
-    const [weatherData, setWeatherData] = useState();
-    const [radarStation, setRadarStation] = useState();
-    const lat = skiResort.latitude;
-    const lon = skiResort.longitude;
+const CurrentWeather = ({ skiResort }) => {
+  const [weatherData, setWeatherData] = useState([]);
+  const [latitude, longitude] = skiResort.split(",");
 
-    
-    async function fetchCurrentWeather() {
-        try {
-
-            let pointResponse = await axios.get(`https://api.weather.gov/points/${skiResort.replace(' ', "")}`,
-            {headers: {
-                'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
-                'Accept': 'application/ld+json',
-                
-            }
-            
-            })
-            let forecastUrl = pointResponse.data.forecast;
-            let radarStation = pointResponse.data.radarStation;
-            let forecastResponse = await axios.get(forecastUrl, {
-                headers: {
-                    'User-Agent': ('myweatherapp.com','bdavis83@gmail.com'),
-                    'Accept': 'application/json',
-                }
-            });
-            console.log(pointResponse.data)
-            console.log(radarStation)
-            console.log (forecastResponse.data)        
-            setWeatherData(forecastResponse.data)
-            setRadarStation(pointResponse.data.radarStation)
-            
-        } catch (error) {
-            console.log(error.message)
-        }
-    }
-    useEffect(()=> {
-        console.log(skiResort)
-        fetchCurrentWeather()
-    }, [lat, lon]);
-
-    return (
-        <Grid container spacing={2}>
-          {weatherData?.properties?.periods.map((period, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card sx={{ height: 400 }}>
-                <CardContent>
-                  <Typography variant="h5" component="h2" gutterBottom>
-                    {period.name}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" gutterBottom>
-                    {period.temperature}&deg;F
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" gutterBottom>
-                    {period.shortForecast.includes('Rain') ? 'Rain' : 'Snow'}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" gutterBottom>
-                    Wind: {period.windSpeed} {period.windDirection}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" gutterBottom>
-                    {period.detailedForecast}
-                  </Typography>
-
-                  <Typography variant="body2" color="textSecondary" gutterBottom>
-                    {radarStation}
-                  </Typography>
-                  <Typography>
-                    <Link to={`/historicalweather/${skiResort}`}
-                      >
-                      <Typography variant="body2" color="textSecondary" gutterBottom>Weather 24 Hours Ago</Typography>
-                    </Link>
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+  useEffect(() => {
+    async function fetchData() {
+      let response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude.trim()}&units=imperial&appid=${openWeatherKey}`
       );
-    };
+      setWeatherData(response.data);
+    }
+    fetchData();
+  }, [latitude, longitude]);
 
-    export default CurrentWeather;
+  if (!weatherData.main) {
+    return null;
+  }
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vhvh', paddingTop: '50px' }}>
+      <Card sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: '0.5rem' }}>
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            Date: {moment.unix(weatherData.dt).format("MM/DD/YYYY")}
+          </Typography>
+          <Typography variant="body2" component="p">
+            Temperature: {weatherData.main.temp}&deg;F
+          </Typography>
+          <Typography variant="body2" component="p">
+            Weather: {weatherData.weather[0].description}
+          </Typography>
+          <Typography variant="body2" component="p">
+            Wind Speed: {weatherData.wind.speed}
+          </Typography>
+          <Typography variant="body2" component="p">
+            Wind Gust: {weatherData.wind.gust}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default CurrentWeather;
