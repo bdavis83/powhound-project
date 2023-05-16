@@ -20,6 +20,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import HistoricalWeatherPage from "./pages/HistoricalWeatherPage/HistoricalWeatherPage";
 import GoogleMapSkiResorts from "./components/GoogleMapSkiResorts/GoogleMapSkiResorts";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import ZipForecastPage from "./pages/ZipForecastPage/ZipForecastPage";
 
 
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/currrentweather/:id" element = {<CurrentWeatherPage />} />
         <Route path="/regionalweather/" element={<RegionalWeatherPage />} />
         <Route path="/weatherbyzip/:id" element={<WeatherByZipPage />} />
+        <Route path="/zipforecast/:id" element={<ZipForecastPage />} />
       </Routes>
       <Footer />
     </div>
