@@ -74,16 +74,12 @@ const DisplaySkiResorts = () => {
               }}
             >
               <div>
-                <Link to ={`/currrentweather/${skiResort.latitude}, ${skiResort.longitude}`}>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                    {skiResort.name} Current Weather
-                  </Typography>
-                </Link>
-                <Link to={`/weatherforecast/${skiResort.latitude},${skiResort.longitude}`}>
+                
+                
                   <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
                     {skiResort.name}
                   </Typography>
-                </Link>
+                
                 <Typography variant="body2" sx={{ marginBottom: '1rem' }}>
                   {skiResort.city}, {skiResort.state} ({skiResort.region})
                 </Typography>
@@ -93,6 +89,16 @@ const DisplaySkiResorts = () => {
                 <Typography variant="body2" sx={{ fontSize: '12px' }}>
                   Longitude: {skiResort.longitude}
                 </Typography>
+                <Link to ={`/currrentweather/${skiResort.latitude}, ${skiResort.longitude}`}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                    {skiResort.name} Current Weather
+                  </Typography>
+                </Link>
+                <Link to={`/weatherforecast/${skiResort.latitude},${skiResort.longitude}`}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                    {skiResort.name} 7-Day Forecast
+                  </Typography>
+                </Link>
               </div>
 
               <div>

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import SearchBar from "../SearchBar/SearchBar";
+import WeatherByZip from "../WeatherByZipCode/WeatherByZipCode";
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -26,7 +27,7 @@ const Navbar = () => {
             <p>Resorts on the Map</p>
           </Link></li>
        
-          <SearchBar/>
+          <WeatherByZip />
           
         
         <li>

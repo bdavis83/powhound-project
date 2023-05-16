@@ -9,7 +9,8 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import POWhoundHome from "./pages/POWhoundHome/POWhoundHome";
 import CurrentWeatherPage from "./pages/CurrentWeatherPage/CurrentWeatherPage";
 import WeatherForecastPage from "./pages/WeatherForecastPage/WeatherForecastPage";
-
+import RegionalWeatherPage from "./pages/RegionalWeatherPage/RegionalWeatherPage";
+import WeatherByZipPage from "./pages/WeatherByZipPage/WeatherByZipPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -19,7 +20,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 import HistoricalWeatherPage from "./pages/HistoricalWeatherPage/HistoricalWeatherPage";
 import GoogleMapSkiResorts from "./components/GoogleMapSkiResorts/GoogleMapSkiResorts";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
-import Banner from "./components/Banner/Banner";
+
+
 
 function App() {
   return (
@@ -43,7 +45,8 @@ function App() {
         <Route path="/historicalWeather/:id" element = {<HistoricalWeatherPage />} />
         <Route path="/resortmap/" element = {<GoogleMapSkiResorts />} />
         <Route path="/currrentweather/:id" element = {<CurrentWeatherPage />} />
-        
+        <Route path="/regionalweather/" element={<RegionalWeatherPage />} />
+        <Route path="/weatherbyzip/:id" element={<WeatherByZipPage />} />
       </Routes>
       <Footer />
     </div>
