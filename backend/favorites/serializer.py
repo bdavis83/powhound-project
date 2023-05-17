@@ -1,8 +1,12 @@
 from rest_framework import serializers
 from .models import Favorites
 
-class FavoritesSerializer (serializers.Serializer):
+
+class FavoritesSerializer (serializers.ModelSerializer):
+
     class Meta:
         model = Favorites
-        fields = ['user', 'ski_resort', 'text', 'is_favorite','user_id']
-        depth = 1
+        fields = ['id', 'user', 'user_id', 'ski_resort_id', 'ski_resort', 'is_favorite']
+        depth = 2
+    user_id = serializers.IntegerField(write_only=True)
+    ski_resort_id = serializers.IntegerField(write_only=True)
