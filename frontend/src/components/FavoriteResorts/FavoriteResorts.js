@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Checkbox, FormControlLabel, Grid } from '@mui/material';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
@@ -21,8 +21,8 @@ const Favorites = ({ skiResorts, onToggleFavorite }) => {
         { ski_resort_id: skiResort.id },
         {
           headers: {
-            Authorization: 'Bearer ' + token
-          }
+            Authorization: 'Bearer ' + token,
+          },
         }
       );
       console.log(response.data);

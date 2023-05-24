@@ -29,31 +29,37 @@ const PastWeather = ({ skiResort }) => {
   }
 
   return (
-
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-    <Grid container spacing={3}>
-      {pastWeatherData.data.map((data, index) => (
-        <Card key={index} sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: '0.5rem', }}>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Date: {moment.unix(data.dt).format("MM/DD/YYYY")}
-            </Typography>
-            <Typography variant="body2" component="p">
-              Temperature: {data.temp}&deg;F
-            </Typography>
-            <Typography variant="body2" component="p">
-              Weather: {data.weather.description}
-            </Typography>
-            <Typography variant="body2" component="p">
-              Wind Speed: {data.wind_speed}
-            </Typography>
-            <Typography variant="body2" component="p">
-              Wind Gust: {data.wind_gust}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
-    </Grid>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Grid container spacing={3}>
+        {pastWeatherData.data.map((data, index) => (
+          <Card
+            key={index}
+            sx={{
+              backgroundColor: "white",
+              boxShadow: 1,
+              borderRadius: "0.5rem",
+            }}
+          >
+            <CardContent>
+              <Typography variant="h5" component="h2">
+                Date: {moment.unix(data.dt).format("MM/DD/YYYY")}
+              </Typography>
+              <Typography variant="body2" component="p">
+                Temperature: {data.temp}&deg;F
+              </Typography>
+              <Typography variant="body2" component="p">
+                Weather: {data.weather.description}
+              </Typography>
+              <Typography variant="body2" component="p">
+                Wind Speed: {data.wind_speed}
+              </Typography>
+              <Typography variant="body2" component="p">
+                Wind Gust: {data.wind_gust}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
+      </Grid>
     </div>
   );
 };

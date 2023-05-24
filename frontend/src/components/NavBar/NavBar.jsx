@@ -26,6 +26,7 @@ const Navbar = () => {
           <li><Link to="/resortmap/" style = {{textDecoration: "none", color: "white"}}>
             <p>Resorts on the Map</p>
           </Link></li>
+          <li><Link to="/favorites/">favorites</Link></li>
        
           <WeatherByZip />
           
