@@ -13,24 +13,29 @@ const Navbar = () => {
     <div className="navBar">
       <ul className="navLinks">
         <li className="brand">
-          <Link to="/powhoundhome" style={{ textDecoration: "none", color: "white" }}>
+          <Link
+            to="/powhoundhome"
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <b>POWhound</b>
-          </Link></li>
-          {/* <li>
-            <Link to="/" style = {{textDecoration: "none", color: "white"}}>
-            <p>IKON Pass Resorts</p>
-          </Link></li>
-          <li><Link to="/" style = {{textDecoration: "none", color: "white"}}>
-            <p>Epic Pass Resorts</p>
-          </Link></li> */}
-          <li><Link to="/resortmap/" style = {{textDecoration: "none", color: "white"}}>
-            <p>Resorts on the Map</p>
-          </Link></li>
-          <li><Link to="/favorites/">favorites</Link></li>
-       
-          <WeatherByZip />
-          
+          </Link>
+        </li>
         
+        <li>
+          <Link
+            to="/resortmap/"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <p>Resorts on the Map</p>
+          </Link>
+        </li>
+        <li>
+          <Link to="/favorites/"
+          style={{ textDecoration: "none", color: "white" }}>Favorites</Link>
+        </li>
+
+        <WeatherByZip />
+
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

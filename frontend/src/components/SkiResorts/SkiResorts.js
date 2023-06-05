@@ -95,6 +95,7 @@ const DisplaySkiResorts = () => {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
+                marginTop: "1.5rem"
               }}
             >
               <CardContent
@@ -125,7 +126,7 @@ const DisplaySkiResorts = () => {
                     to={`/currrentweather/${skiResort.latitude}, ${skiResort.longitude}`}
                   >
                     <Typography
-                      variant="subtitle1"
+                      variant="body2"
                       sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}
                     >
                       {skiResort.name} Current Weather
@@ -135,7 +136,7 @@ const DisplaySkiResorts = () => {
                     to={`/weatherforecast/${skiResort.latitude},${skiResort.longitude}`}
                   >
                     <Typography
-                      variant="subtitle1"
+                      variant="body2"
                       sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}
                     >
                       {skiResort.name} 7-Day Forecast

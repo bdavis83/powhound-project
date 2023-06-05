@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+import React, { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 const AddFavorite = ({ skiResortId }) => {
   const [user, token] = useAuth();
@@ -11,21 +11,24 @@ const AddFavorite = ({ skiResortId }) => {
 
     try {
       if (favorite) {
-        await axios.delete(`http://127.0.0.1:8000/api/favorites/remove/${skiResortId}/`, {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
-        });
+        await axios.delete(
+          `http://127.0.0.1:8000/api/favorites/remove/${skiResortId}/`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
       } else {
         // Add favorite
         await axios.post(
-          'http://127.0.0.1:8000/api/favorites/add/',
+          "http://127.0.0.1:8000/api/favorites/add/",
           {
-            ski_resort_id: skiResortId
+            ski_resort_id: skiResortId,
           },
           {
             headers: {
-              Authorization: 'Bearer ' + token,
+              Authorization: "Bearer " + token,
             },
           }
         );
@@ -37,17 +40,17 @@ const AddFavorite = ({ skiResortId }) => {
   }
 
   const addButtonStyles = {
-    fontSize: '12px',
-    padding: '4px 8px',
-    borderRadius: '4px',
-    border: 'none',
-    cursor: 'pointer',
-    backgroundColor: favorite ? 'lightblue' : 'lightgray',
+    fontSize: "12px",
+    padding: "4px 8px",
+    borderRadius: "4px",
+    border: "none",
+    cursor: "pointer",
+    backgroundColor: favorite ? "lightblue" : "lightgray",
   };
 
   const highlightedStyles = {
-    backgroundColor: 'darkblue',
-    color: 'white',
+    backgroundColor: "darkblue",
+    color: "white",
   };
 
   return (
@@ -58,8 +61,8 @@ const AddFavorite = ({ skiResortId }) => {
           style={{
             ...addButtonStyles,
             ...highlightedStyles,
-            marginTop: '1rem',
-            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+            marginTop: "1rem",
+            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
           }}
           onClick={handleAddFavorite}
         >
@@ -68,7 +71,11 @@ const AddFavorite = ({ skiResortId }) => {
       ) : (
         <button
           type="button"
-          style={{ ...addButtonStyles, marginTop: '1rem', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)' }}
+          style={{
+            ...addButtonStyles,
+            marginTop: "1rem",
+            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+          }}
           onClick={handleAddFavorite}
         >
           Add to Favorites

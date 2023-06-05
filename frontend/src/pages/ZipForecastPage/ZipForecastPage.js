@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { openWeatherKey } from '../../openweatherkey';
-import { Card, CardContent, Typography } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { openWeatherKey } from "../../openweatherkey";
+import { Card, CardContent, Typography } from "@mui/material";
 
 const ZipForecastPage = () => {
   const { id } = useParams();
@@ -37,8 +37,12 @@ const ZipForecastPage = () => {
                 <Typography variant="h5" component="div">
                   Date: {item.dt_txt}
                 </Typography>
-                <Typography variant="body1">Temperature: {item.main.temp}</Typography>
-                <Typography variant="body1">Description: {item.weather[0].description}</Typography>
+                <Typography variant="body1">
+                  Temperature: {item.main.temp}
+                </Typography>
+                <Typography variant="body1">
+                  Description: {item.weather[0].description}
+                </Typography>
               </CardContent>
             </Card>
           ))}

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { Typography, Card, CardContent, Box } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { Typography, Card, CardContent, Box } from "@mui/material";
 
 const WeatherByZipPage = () => {
   const { id } = useParams();
@@ -20,8 +20,12 @@ const WeatherByZipPage = () => {
           <Typography variant="h5">Current Weather for {id}</Typography>
           {weatherData && (
             <div>
-              <Typography variant="body1">Temperature: {weatherData.main.temp}</Typography>
-              <Typography variant="body1">Description: {weatherData.weather[0].description}</Typography>
+              <Typography variant="body1">
+                Temperature: {weatherData.main.temp}
+              </Typography>
+              <Typography variant="body1">
+                Description: {weatherData.weather[0].description}
+              </Typography>
               <button onClick={handleForecastClick}>Forecast</button>
             </div>
           )}
@@ -32,5 +36,3 @@ const WeatherByZipPage = () => {
 };
 
 export default WeatherByZipPage;
-
-

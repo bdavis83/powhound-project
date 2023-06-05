@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMapsApiKEY } from "../../googlemapsapikey";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import WeatherForecast from "../WeatherForecast/WeatherForecast";
 
 const containerStyle = {
-  width: '100%',
-  height: '500px'
+  width: "100%",
+  height: "500px",
 };
 
 const center = {
@@ -18,8 +23,8 @@ const center = {
 
 function GoogleMapSkiResorts() {
   const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: GoogleMapsApiKEY
+    id: "google-map-script",
+    googleMapsApiKey: GoogleMapsApiKEY,
   });
 
   const [map, setMap] = useState(null);
@@ -27,7 +32,9 @@ function GoogleMapSkiResorts() {
   const [skiResorts, setSkiResorts] = useState([]);
 
   async function fetchSkiResorts() {
-    let response = await axios.get(`http://127.0.0.1:8000/api/ski_resorts/all/`);
+    let response = await axios.get(
+      `http://127.0.0.1:8000/api/ski_resorts/all/`
+    );
     console.log(response.data);
     setSkiResorts(response.data);
   }
@@ -50,7 +57,7 @@ function GoogleMapSkiResorts() {
       skiResorts.forEach((skiResort) => {
         bounds.extend({
           lat: Number(skiResort.latitude),
-          lng: Number(skiResort.longitude)
+          lng: Number(skiResort.longitude),
         });
       });
 
@@ -79,7 +86,10 @@ function GoogleMapSkiResorts() {
       {skiResorts.map((skiResort) => (
         <Marker
           key={skiResort.id}
-          position={{ lat: Number(skiResort.latitude), lng: Number(skiResort.longitude) }}
+          position={{
+            lat: Number(skiResort.latitude),
+            lng: Number(skiResort.longitude),
+          }}
           title={skiResort.name}
           onClick={() => handleMarkerClick(skiResort)}
         >
@@ -87,9 +97,13 @@ function GoogleMapSkiResorts() {
             <InfoWindow onCloseClick={handleInfoWindowClose}>
               <div>
                 <h3>{skiResort.name}</h3>
-                <p>{skiResort.city}, {skiResort.state}</p>
+                <p>
+                  {skiResort.city}, {skiResort.state}
+                </p>
                 <p>Region: {skiResort.region}</p>
-                <Link to={`/WeatherForecast/${skiResort.latitude}, ${skiResort.longitude}`}>
+                <Link
+                  to={`/WeatherForecast/${skiResort.latitude}, ${skiResort.longitude}`}
+                >
                   Forecast
                 </Link>
               </div>
@@ -98,7 +112,9 @@ function GoogleMapSkiResorts() {
         </Marker>
       ))}
     </GoogleMap>
-  ) : <></>;
+  ) : (
+    <></>
+  );
 }
 
 export default React.memo(GoogleMapSkiResorts);

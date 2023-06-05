@@ -23,8 +23,18 @@ const CurrentWeather = ({ skiResort }) => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vhvh', paddingTop: '50px' }}>
-      <Card sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: '0.5rem' }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "50vhvh",
+        paddingTop: "50px",
+      }}
+    >
+      <Card
+        sx={{ backgroundColor: "white", boxShadow: 1, borderRadius: "0.5rem" }}
+      >
         <CardContent>
           <Typography variant="h5" component="h2">
             Date: {moment.unix(weatherData.dt).format("MM/DD/YYYY")}

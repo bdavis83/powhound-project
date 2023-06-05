@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { openWeatherKey } from '../../openweatherkey';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { openWeatherKey } from "../../openweatherkey";
 
 const WeatherByZip = () => {
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState("");
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState(null);
 
@@ -47,4 +47,3 @@ const WeatherByZip = () => {
 };
 
 export default WeatherByZip;
-

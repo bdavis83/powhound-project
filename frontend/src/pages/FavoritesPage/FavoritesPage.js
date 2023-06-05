@@ -37,12 +37,12 @@ const FavoritesPage = () => {
                   {favorite.ski_resort.name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Location: {favorite.ski_resort.city}, {favorite.ski_resort.state}
+                  Location: {favorite.ski_resort.city},{" "}
+                  {favorite.ski_resort.state}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Region: {favorite.ski_resort.region}
                 </Typography>
-                
               </CardContent>
             </Card>
           </Grid>

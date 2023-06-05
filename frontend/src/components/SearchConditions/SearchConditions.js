@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { openWeatherKey } from '../../openweatherkey';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { openWeatherKey } from "../../openweatherkey";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SearchConditions = ({ skiResorts }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
   const handleSearch = async () => {
     const apiKey = openWeatherKey;
-    const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+    const apiUrl = "https://api.openweathermap.org/data/2.5/forecast";
 
     const filteredResorts = [];
 
@@ -22,40 +22,50 @@ const SearchConditions = ({ skiResorts }) => {
             lon: resort.longitude,
             appid: apiKey,
             cnt: 1, // Retrieve a single forecast data point
-            units: 'imperial',
+            units: "imperial",
           },
         });
 
-        console.log('Weather Response:', response.data);
+        console.log("Weather Response:", response.data);
 
         const temperature = response.data.list[0].main.temp;
         const isSpringConditions = temperature >= 50 && temperature <= 70;
 
-        if (searchQuery.toLowerCase() === 'spring' && isSpringConditions) {
+        if (searchQuery.toLowerCase() === "spring" && isSpringConditions) {
           filteredResorts.push(resort);
         }
       } catch (error) {
-        console.log(`Error fetching weather for ${resort.name}: ${error.message}`);
+        console.log(
+          `Error fetching weather for ${resort.name}: ${error.message}`
+        );
       }
     }
 
     setSearchResults(filteredResorts);
-    console.log('Search Results:', filteredResorts);
-    navigate('/displaysearchconditions/', { state: { searchResults: filteredResorts } });
+    console.log("Search Results:", filteredResorts);
+    navigate("/displaysearchconditions/", {
+      state: { searchResults: filteredResorts },
+    });
   };
 
   return (
     <div>
-      <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-      <button onClick={handleSearch}>Search</button>
+      <input
+        type="text"
+        placeholder="Search by Conditions"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <button onClick={handleSearch}
+      sx={{margin: "1rem"}}>Search</button>
 
-      <h3>Search Results:</h3>
+      
       <ul>
         {searchResults.map((resort) => (
           <li key={resort.id}>
             {resort.name}
-            {resort.powderConditions ? ' - Powder Conditions' : ''}
-            {resort.springConditions ? ' - Spring Conditions' : ''}
+            {resort.powderConditions ? " - Powder Conditions" : ""}
+            {resort.springConditions ? " - Spring Conditions" : ""}
           </li>
         ))}
       </ul>
