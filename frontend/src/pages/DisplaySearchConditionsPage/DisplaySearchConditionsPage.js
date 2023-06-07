@@ -1,5 +1,4 @@
 import React from "react";
-import SearchConditions from "../../components/SearchConditions/SearchConditions";
 import { Typography, Card, CardContent, Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
@@ -11,7 +10,9 @@ function DisplaySearchConditionsPage() {
   const searchResults = state && state.searchResults;
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div
+      style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}
+    >
       <Typography variant="h4" gutterBottom>
         Display Search Conditions
       </Typography>

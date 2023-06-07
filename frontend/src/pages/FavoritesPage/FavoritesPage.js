@@ -26,7 +26,7 @@ const FavoritesPage = () => {
   }
 
   return (
-    <div>
+    <div style={{ marginLeft: "1rem", marginRight: "1rem" }}>
       <h1>My Favorites</h1>
       <Grid container spacing={3}>
         {favorites.map((favorite) => (

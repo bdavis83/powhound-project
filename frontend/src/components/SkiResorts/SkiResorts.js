@@ -95,7 +95,7 @@ const DisplaySkiResorts = () => {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-                marginTop: "1.5rem"
+                marginTop: "1.5rem",
               }}
             >
               <CardContent
@@ -124,6 +124,7 @@ const DisplaySkiResorts = () => {
                   </Typography>
                   <Link
                     to={`/currrentweather/${skiResort.latitude}, ${skiResort.longitude}`}
+                    sx={{ color: "black", textDecoration: "none" }}
                   >
                     <Typography
                       variant="body2"
@@ -134,6 +135,7 @@ const DisplaySkiResorts = () => {
                   </Link>
                   <Link
                     to={`/weatherforecast/${skiResort.latitude},${skiResort.longitude}`}
+                    sx={{ color: "black", textDecoration: "none" }}
                   >
                     <Typography
                       variant="body2"

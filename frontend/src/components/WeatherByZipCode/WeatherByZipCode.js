@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { openWeatherKey } from "../../openweatherkey";
 
@@ -16,7 +16,7 @@ const WeatherByZip = () => {
     event.preventDefault();
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${openWeatherKey}`
+        `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&units=imperial&appid=${openWeatherKey}`
       );
       const weatherData = response.data;
       console.log(weatherData);

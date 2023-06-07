@@ -32,7 +32,7 @@ const ZipForecastPage = () => {
       {weatherData && (
         <div>
           {weatherData.list.map((item) => (
-            <Card key={item.dt} variant="outlined">
+            <Card key={item.dt} variant="outlined" sx={{ marginBottom: "1rem" }}>
               <CardContent>
                 <Typography variant="h5" component="div">
                   Date: {item.dt_txt}
